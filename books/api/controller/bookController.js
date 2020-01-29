@@ -3,7 +3,10 @@ const Book = require('../models/bookModel');
 
 module.exports.getBooks = (req, res) => {
     Book.find().then((books) => {
-        res.send(books);
+        res.send({
+            statusCode: 200,
+            books
+        });
     }).catch(err => {
         res.send(err);
     })

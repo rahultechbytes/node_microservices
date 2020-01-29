@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "nodemon index",
-    "test": "mocha ./test/*.js --reporter spec --timeout 15000"
+    "test": "mocha ./test/*.js --timeout 15000"
   },
   "keywords": [],
   "author": "",
