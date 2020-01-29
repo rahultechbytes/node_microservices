@@ -11,7 +11,10 @@ module.exports.getBooks = (req, res) => {
 
 module.exports.getBooksById = (req, res) => {
     Book.findById(req.params.id).then(data => {
-        res.send(data)
+        res.json({
+            statusCode: 200,
+            data
+        })
     }).catch(err => {
         res.send(err);
     })
@@ -19,9 +22,15 @@ module.exports.getBooksById = (req, res) => {
 
 module.exports.deleteBooksById = (req, res) => {
     Book.findOneAndRemove(req.params.id).then(data => {
-        res.send(data);
+        res.send({
+            statusCode: 200,
+            data
+        });
     }).catch(err => {
-        res.send(err);
+        res.send({
+            statusCode: 200,
+            err
+        });
     })
 }
 
@@ -34,8 +43,14 @@ module.exports.postBooks = (req, res) => {
         publisher: publisher
     });
     newBook.save().then(data => {
-        res.send(data)
+        res.json({
+            statusCode: 200,
+            data
+        })
     }).catch(err => {
-        res.send(err);
+        res.json({
+            statusCode: 404,
+            err
+        });
     })
 }
