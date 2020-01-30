@@ -1,0 +1,202 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Book API is used to perform books related operations",
+    "version": "1.0.0",
+    "title": "Books API",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/books": {
+      "post": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Add a new Book",
+        "operationId": "postBooks",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Books object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "get All Books",
+        "description": "Find all the books data",
+        "operationId": "getBooks",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "description": "Fetch all books data",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Finds Books by ID",
+        "description": "Books can be fetch by their Object id",
+        "operationId": "getBooksById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "type": "string",
+            "name": "id",
+            "required": true,
+            "description": "The book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Deletes a Book",
+        "description": "",
+        "operationId": "deleteBooksById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "type": "string",
+            "name": "id",
+            "required": true,
+            "description": "The book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Books": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "integer"
+        },
+        "numberPages": {
+          "type": "number"
+        },
+        "publisher": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
